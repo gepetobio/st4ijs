@@ -2,16 +2,18 @@
 var LedControl = require("rpi-led-control"); 
 
 var lc = new LedControl(11,10,9); // data pin, clock pin, cs pin
-lc.setBrightness(0,15);
+//lc.setBrightness(0,5);
 
 var d1 = {x : 0, y:0, xvel:1, yvel :1}; 
 var d2 = {x : 0, y:0, xvel:1, yvel :1}; 
 
 var  startTime = Date.now();
-setInterval(loop, 10);
+setInterval(loop, 100);
 
 function loop() { 
+	lc.setBrightness(0,Math.floor((Math.random() * 15) + 1));
 	with(d1) { 
+		
 		lc.setLed(0,x,y,0); 
 		lc.setLed(0,7-x,7-y,0); 
 	
